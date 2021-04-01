@@ -24,6 +24,10 @@ public class Camera {
         return id;
     }
 
+    public int getCapacity() {
+        return capacity;
+    }
+
     public boolean[][] getSeats() {
         return seats;
     }

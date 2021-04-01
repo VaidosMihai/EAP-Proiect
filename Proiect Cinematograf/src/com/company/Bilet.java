@@ -15,26 +15,29 @@ public class Bilet {
 
     public Bilet(Film movie, Client client, Camera room, int row, int column) {
 
-        id = ++numbertickets;
-        this.movie = movie;
-        this.client = client;
-        this.room = room;
+        if (movie.getAge_required() <= client.getAge()) {
 
-        key_code = "#" + id + "|" + movie.getName().toUpperCase().substring(0, 3) + "|";
-        key_code += String.valueOf(room.getId() + "/" + String.valueOf(row) + "-" + String.valueOf(column));
+            id = ++numbertickets;
+            this.movie = movie;
+            this.client = client;
+            this.room = room;
 
-        if (client.getAge() <= 14) {
-            price = (float) (movie.getPrice() / 2);
-        }//PRET BILET PENTRU COPII
-        else if (client.getAge() > 14 && client.getAge() < 18) {
-            price = (float) (movie.getPrice() - (movie.getPrice() * 0.25));
-        } //PRET BILET PENTRU ADOLESCENTI
-        else if (client.getAge() < 18 && client.getAge() < 60) {
-            price = movie.getPrice();
-        } //PRET BILET ADULTI
-        else {
-            price = (float) (movie.getPrice() - movie.getPrice() * 0.5);
-        } //PRET BILET PENSIONARI
+            key_code = "#" + id + "|" + movie.getName().toUpperCase().substring(0, 3) + "|";
+            key_code += String.valueOf(room.getId() + "/" + String.valueOf(row) + "-" + String.valueOf(column));
+            if (client.getAge() <= 14) {
+                price = (float) (movie.getPrice() / 2);
+            }//PRET BILET PENTRU COPII
+            else if (client.getAge() > 14 && client.getAge() < 18) {
+                price = (float) (movie.getPrice() - (movie.getPrice() * 0.25));
+            } //PRET BILET PENTRU ADOLESCENTI
+                else if (client.getAge() < 18 && client.getAge() < 60) {
+                price = movie.getPrice();
+            } //PRET BILET ADULTI
+            else {
+                price = (float) (movie.getPrice() - movie.getPrice() * 0.5);
+            } //PRET BILET PENSIONARI
+        } else
+            System.out.println(client.getFirst_name() + " nu indeplineste conditia varstei minime pentru acest film!");
     }
 
     public void Print() {

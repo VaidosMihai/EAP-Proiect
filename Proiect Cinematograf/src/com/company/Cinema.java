@@ -21,6 +21,7 @@ public class Cinema {
     public void add_new_room(Camera room) {
         hall.add(room);
         nr_of_rooms++;
+        max_capacity+=room.getCapacity();
     }
 
     public void add_new_client(Client client) {
@@ -43,6 +44,11 @@ public class Cinema {
 
     public int getNr_of_rooms() {
         return nr_of_rooms;
+    }
+
+    public void Print()
+    {
+        System.out.println("Acest cinematograf are "+getNr_of_rooms()+" camere si capacitatea maxima este "+getMax_capacity()+" de persoane.");
     }
 
     public void removeClient(Client client)

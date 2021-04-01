@@ -35,17 +35,16 @@ public class Main {
         BiletVIP bilet4=new BiletVIP(F2,C4,camera_1,3,2); ///Bilet VIP
 
         System.out.println(bilet1.key_code);
-        System.out.println(bilet2.key_code); /// COD bilet
+        System.out.println(bilet2.key_code); /// afisare COD bilet
         System.out.println(bilet4.key_code);
 
         bilet1.Print();
         bilet2.Print();     ///Afisare pret bilet
         bilet4.Print();
 
-        System.out.println(AFI.getHall()); /// afisare camere disponibile pentru filme
+        AFI.Print(); /// afisare camere disponibile pentru filme
 
         AFI.removeClient(C3);    ///Stergem clientul 3 din lista clientilor cinematografului
-
 
     }
 }
