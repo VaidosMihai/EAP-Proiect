@@ -8,7 +8,7 @@ public class Camera {
     private int columns;
     private static int nr_of_rooms = 0;
 
-    Camera(int rows, int columns) {
+    public Camera(int rows, int columns) {
         id = nr_of_rooms++;
         this.capacity = rows * columns;
         this.rows = rows;

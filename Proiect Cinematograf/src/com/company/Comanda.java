@@ -4,13 +4,11 @@ import java.util.ArrayList;
 
 public class Comanda {
     private final int id;
-    private String date;
-    private int waiting_time = 0;
     private ArrayList<String> items;
-    private String key_code;
+    private int waiting_time = 0;
     private static int numberOrders = 0;
 
-    public Comanda(String...values) {
+    public Comanda(Client C1,String...values) {
         id = numberOrders++;
         for (String i: values) {
             waiting_time += 2;

@@ -7,32 +7,40 @@ public class Bilet {
     private int id;
     private Film movie;
     private Client client;
-    private LocOcupat occupied_seat;
-    private String sell_date;
+    private Camera room;
     private static int numbertickets = 0;
 
     protected String key_code;
     protected float price;
 
-    public Bilet(Film movie, Client client, LocOcupat occupied_seat) {
+    public Bilet(Film movie, Client client, Camera room, int row, int column) {
 
         id = ++numbertickets;
         this.movie = movie;
         this.client = client;
-        this.occupied_seat = occupied_seat;
-
-        if (client.getAge() != 0) {
-            if (client.getAge() <= 14) price = (float) (price - price * 0.5);  //PRET BILET PENTRU COPII
-            if (client.getAge() > 14 && client.getAge() < 18)
-                price = (float) (price - price * 0.25); //PRET BILET PENTRU ADOLESCENTI
-            if (client.getAge() < 18 && client.getAge() < 60) price = price; //PRET BILET ADULTI
-            if (client.getAge() >= 60) price = (float) (price - price * 0.5); //PRET BILET PENSIONARI
-        }
+        this.room = room;
 
         key_code = "#" + id + "|" + movie.getName().toUpperCase().substring(0, 3) + "|";
-        key_code += String.valueOf(occupied_seat.getRoom()) + "/" + String.valueOf(occupied_seat.getRow()) + String.valueOf(occupied_seat.getColumn());
+        key_code += String.valueOf(room.getId() + "/" + String.valueOf(row) + "-" + String.valueOf(column));
 
+        if (client.getAge() <= 14) {
+            price = (float) (movie.getPrice() / 2);
+        }//PRET BILET PENTRU COPII
+        else if (client.getAge() > 14 && client.getAge() < 18) {
+            price = (float) (movie.getPrice() - (movie.getPrice() * 0.25));
+        } //PRET BILET PENTRU ADOLESCENTI
+        else if (client.getAge() < 18 && client.getAge() < 60) {
+            price = movie.getPrice();
+        } //PRET BILET ADULTI
+        else {
+            price = (float) (movie.getPrice() - movie.getPrice() * 0.5);
+        } //PRET BILET PENSIONARI
     }
+
+    public void Print() {
+        System.out.println("Pretul biletului este " + price);
+    }
+
 
     public Film getMovie() {
         return movie;
@@ -40,14 +48,6 @@ public class Bilet {
 
     public Client getClient() {
         return client;
-    }
-
-    public LocOcupat getLocOcupat() {
-        return occupied_seat;
-    }
-
-    public String getSell_date() {
-        return sell_date;
     }
 
     public float getPrice() {
@@ -65,4 +65,5 @@ public class Bilet {
     public static int getNumbertickets() {
         return numbertickets;
     }
+
 }

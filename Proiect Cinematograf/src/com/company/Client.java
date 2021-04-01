@@ -5,11 +5,11 @@ public class Client {
     private String last_name;
     private int age;
 
-    public Client(String first_name, String last_name, int age) {
+    public Client(String first_name, String last_name, int age ,int money) {
         this.first_name = first_name;
         this.last_name = last_name;
         this.age = age;
-        System.out.println("Nume: " + first_name + " Prenume: " + last_name + " Varsta: " + age);
+        System.out.println("First name: " + first_name + " Last name: " + last_name + " Age: " + age);
     }
 
     public String getFirst_name() {
@@ -20,6 +20,9 @@ public class Client {
         return last_name;
     }
 
+    public String getFullName(){
+        return first_name+" "+last_name;
+    }
     public int getAge() {
         return age;
     }
