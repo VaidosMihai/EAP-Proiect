@@ -2,7 +2,7 @@ package com.company;
 
 import java.util.Date;
 
-public class Bilet {
+public class Bilet implements BiletService {
 
     private int id;
     private Film movie;
@@ -40,6 +40,7 @@ public class Bilet {
             System.out.println(client.getFirst_name() + " nu indeplineste conditia varstei minime pentru acest film!");
     }
 
+    @Override
     public void Print() {
         System.out.println("Pretul biletului este " + price);
     }
@@ -57,6 +58,7 @@ public class Bilet {
         return price;
     }
 
+    @Override
     public String getKey_code() {
         return key_code;
     }

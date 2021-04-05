@@ -46,5 +46,13 @@ public class Main {
 
         AFI.removeClient(C3);    ///Stergem clientul 3 din lista clientilor cinematografului
 
+        Comanda comanda1=new Comanda(new String[]{"pizza","popcorn"});
+        Comanda comanda2=new Comanda(new String[]{"inghetata"}); ///Comenzi pentru bar
+        Comanda comanda3=new Comanda(new String[]{"ciocolata","arahide","covrigei","cips-uri","alune"});
+
+        barAFI.add_orders(comanda1);
+        barAFI.add_orders(comanda2);    /// Adaugam comenzile in coada din clasa Bar
+        barAFI.add_orders(comanda3);
     }
+
 }
