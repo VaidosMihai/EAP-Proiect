@@ -1,23 +1,21 @@
 package com.company;
 
-public class Client {
-    private String first_name;
-    private String last_name;
-    private int age;
+import Write_Files.Write_Audit;
 
-    public Client(String first_name, String last_name, int age ,int money) {
+public class Client {
+    private final String first_name;
+    private final String last_name;
+    private final int age;
+
+    public Client(String first_name, String last_name, int age ) {
+        Write_Audit.writeAudit("New Client");
         this.first_name = first_name;
         this.last_name = last_name;
         this.age = age;
-        System.out.println("First name: " + first_name + " Last name: " + last_name + " Age: " + age);
     }
 
     public String getFirst_name() {
         return first_name;
-    }
-
-    public String getLast_name() {
-        return last_name;
     }
 
     public String getFullName(){

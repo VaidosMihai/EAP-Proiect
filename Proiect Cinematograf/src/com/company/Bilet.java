@@ -1,6 +1,6 @@
 package com.company;
 
-import java.util.Date;
+import Write_Files.Write_Audit;
 
 public class Bilet implements BiletService {
 
@@ -16,13 +16,12 @@ public class Bilet implements BiletService {
     public Bilet(Film movie, Client client, Camera room, int row, int column) {
 
         if (movie.getAge_required() <= client.getAge()) {
-
+            Write_Audit.writeAudit("Generate new ticket for customer "+client.getFullName());
             id = ++numbertickets;
             this.movie = movie;
             this.client = client;
             this.room = room;
-
-            key_code = "#" + id + "|" + movie.getName().toUpperCase().substring(0, 3) + "|";
+            key_code = client.getFirst_name() + "'s ticket has the code " + "#" + id + "|" + movie.getName().toUpperCase().substring(0, 3) + "|";
             key_code += String.valueOf(room.getId() + "/" + String.valueOf(row) + "-" + String.valueOf(column));
             if (client.getAge() <= 14) {
                 price = (float) (movie.getPrice() / 2);
@@ -30,19 +29,21 @@ public class Bilet implements BiletService {
             else if (client.getAge() > 14 && client.getAge() < 18) {
                 price = (float) (movie.getPrice() - (movie.getPrice() * 0.25));
             } //PRET BILET PENTRU ADOLESCENTI
-                else if (client.getAge() < 18 && client.getAge() < 60) {
+            else if (client.getAge() < 18 && client.getAge() < 60) {
                 price = movie.getPrice();
             } //PRET BILET ADULTI
             else {
                 price = (float) (movie.getPrice() - movie.getPrice() * 0.5);
             } //PRET BILET PENSIONARI
         } else
-            System.out.println(client.getFirst_name() + " nu indeplineste conditia varstei minime pentru acest film!");
+            System.out.println(client.getFirst_name() + " does not meet the minimum age requirement for this film!");
+
     }
 
     @Override
     public void Print() {
-        System.out.println("Pretul biletului este " + price);
+        Write_Audit.writeAudit("Print ticket info");
+        System.out.println(client.getFirst_name()+"'s ticket price is " + price +" lei.");
     }
 
 
@@ -60,6 +61,7 @@ public class Bilet implements BiletService {
 
     @Override
     public String getKey_code() {
+        Write_Audit.writeAudit("Print ticket key");
         return key_code;
     }
 

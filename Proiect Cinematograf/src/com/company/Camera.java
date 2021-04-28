@@ -1,14 +1,17 @@
 package com.company;
 
+import Write_Files.Write_Audit;
+
 public class Camera {
-    private int id;
+    private final int id;
     private int capacity;
     private boolean seats[][];
-    private int rows;
-    private int columns;
+    private final int rows;
+    private final int columns;
     private static int nr_of_rooms = 0;
 
     public Camera(int rows, int columns) {
+        Write_Audit.writeAudit("New Camera");
         id = nr_of_rooms++;
         this.capacity = rows * columns;
         this.rows = rows;
@@ -42,6 +45,7 @@ public class Camera {
 
     @Override
     public String toString() {
+        Write_Audit.writeAudit("Print rooms");
         return "Room: [" + id + "]";
     }
 }

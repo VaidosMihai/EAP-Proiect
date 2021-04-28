@@ -1,5 +1,7 @@
 package com.company;
 
+import Write_Files.Write_Audit;
+
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.Queue;
@@ -102,6 +104,7 @@ public class Bar {
     }
 
     public void add_orders(Comanda comanda) {
+        Write_Audit.writeAudit("Add order");
         orders.add(comanda);
     }
 

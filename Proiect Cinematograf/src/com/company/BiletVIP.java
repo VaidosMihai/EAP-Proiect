@@ -6,7 +6,7 @@ public class BiletVIP extends Bilet {
         super(movie, client, room, row, column);
         key_code += "^VIP";
 
-        price = (float) (movie.getPrice() *2);
+        price = movie.getPrice() *2;
 
     }
 }
