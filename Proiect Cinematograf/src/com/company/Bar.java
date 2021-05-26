@@ -7,6 +7,7 @@ import java.util.Iterator;
 import java.util.Queue;
 
 public class Bar {
+
     private Queue <Comanda> orders;
 
     public Bar() {

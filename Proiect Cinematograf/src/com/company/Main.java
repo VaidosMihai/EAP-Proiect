@@ -1,13 +1,40 @@
 package com.company;
 
+import DB_Files.SysConnect;
+
+import java.sql.SQLException;
+
 import Write_Files.*;
+
 import java.util.ArrayList;
+
 import Read_Files.*;
+
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
 
-        Client C1 = new Client("Andrei", "Ion", 28);
+        SysConnect run = new SysConnect();
+        Menu menu=new Menu();
+        menu.runMenu();
+        //run.AddFilm();
+        //run.DeleteFilm();
+        //run.SelectFilm();         //add,delete,select,update pentru clasa Film
+        //run.UpdateFilm();
+
+        //run.AddCamera();
+        //run.DeleteCamera();
+        //run.SelectCamera();         //add,delete,select,update pentru clasa Camera
+        //run.UpdateCamera();
+
+        //run.AddClient();
+        //run.DeleteClient();
+        //run.SelectClient();         //add,delete,select,update pentru clasa Client
+        //run.UpdateClient();
+
+
+
+        /* Client C1 = new Client("Andrei", "Ion", 28);
         Client C2 = new Client("Ana", "Maria", 14);
         Client C3 = new Client("Daniel", "Olar", 17);
         Client C4 = new Client("Mircea", "Racovita", 21);
@@ -77,7 +104,7 @@ public class Main {
         for (Cinema cinema : cinemauri) {
             System.out.println(cinema.getCinema_name());
         }
-
+        */
     }
 
 }

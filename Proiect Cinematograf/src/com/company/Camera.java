@@ -2,25 +2,35 @@ package com.company;
 
 import Write_Files.Write_Audit;
 
+import java.util.Scanner;
+
 public class Camera {
-    private final int id;
+    private int id;
     private int capacity;
-    private boolean seats[][];
-    private final int rows;
-    private final int columns;
+    private int rows;
+    private int columns;
     private static int nr_of_rooms = 0;
 
     public Camera(int rows, int columns) {
-        Write_Audit.writeAudit("New Camera");
+        Write_Audit.writeAudit("New Room");
         id = nr_of_rooms++;
         this.capacity = rows * columns;
         this.rows = rows;
         this.columns = columns;
-        seats = new boolean[rows][columns];
     }
 
-    public boolean isOccupied(int row, int column) {
-        return seats[row][column];
+    public Camera(int x) {
+    }
+
+    public Camera() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Room ID: ");
+        this.id = Integer.parseInt(in.nextLine());
+        System.out.println("Number of rows:");
+        this.rows = Integer.parseInt(in.nextLine());
+        System.out.println("Number of columns:");
+        this.columns = Integer.parseInt(in.nextLine());
+        this.capacity = rows * columns;
     }
 
     public int getId() {
@@ -31,9 +41,6 @@ public class Camera {
         return capacity;
     }
 
-    public boolean[][] getSeats() {
-        return seats;
-    }
 
     public int getRows() {
         return rows;
@@ -41,6 +48,14 @@ public class Camera {
 
     public int getColumns() {
         return columns;
+    }
+
+    public void setColumns(int columns) {
+        this.columns = columns;
+    }
+
+    public void setRows(int rows) {
+        this.rows = rows;
     }
 
     @Override

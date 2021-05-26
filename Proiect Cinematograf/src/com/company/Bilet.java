@@ -2,6 +2,8 @@ package com.company;
 
 import Write_Files.Write_Audit;
 
+import java.util.Scanner;
+
 public class Bilet implements BiletService {
 
     private int id;
@@ -39,7 +41,16 @@ public class Bilet implements BiletService {
             System.out.println(client.getFirst_name() + " does not meet the minimum age requirement for this film!");
 
     }
+    /*public Bilet() {
+        Scanner in = new Scanner(System.in);
+        System.out.println("Filmul dorit: ");
+        this.first_name = in.nextLine();
+        System.out.println("Last Name:");
+        this.last_name = in.nextLine();
+        System.out.println("Age:");
+        this.age = Integer.parseInt(in.nextLine());
 
+    }*/
     @Override
     public void Print() {
         Write_Audit.writeAudit("Print ticket info");

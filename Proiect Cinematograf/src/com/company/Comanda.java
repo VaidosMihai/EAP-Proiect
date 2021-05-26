@@ -18,7 +18,7 @@ public class Comanda {
         else if (items.length == 2) juice = "Medium Juice ";
         else if (items.length > 2) juice = "Great Juice ";
         print_menu_items();
-        Write_Audit.writeAudit("New order ["+getId()+"]");
+        Write_Audit.writeAudit("New order [" + getId() + "]");
     }
 
     public int getId() {

@@ -2,18 +2,14 @@ package com.company;
 
 import Write_Files.Write_Audit;
 
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 public class Cinema implements CinemaService {
     private List<Camera> hall;
     private Set<Client> client_list;
-    private final String Cinema_name;
+    private String Cinema_name;
     private int max_capacity;
     private int nr_of_rooms;
-
     public Cinema(String Name) {
         Write_Audit.writeAudit("New Cinema");
         Cinema_name = Name;
@@ -22,7 +18,15 @@ public class Cinema implements CinemaService {
         max_capacity = 0;
         nr_of_rooms = 0;
     }
-
+    public Cinema(){
+        Scanner in = new Scanner(System.in);
+        System.out.println("Cinema Name: ");
+        this.Cinema_name = in.nextLine();
+    }
+    public Cinema(int x){}
+    public void setCinemaName(String name){
+        this.Cinema_name=name;
+    }
     @Override
     public void add_new_room(Camera room) {
         hall.add(room);
